@@ -10,4 +10,4 @@
 
 # Author
 
-Author:: Intuit, Inc. (<@intuit.com>)
+Author:: Intuit, Inc. (<kevin_young@intuit.com>)

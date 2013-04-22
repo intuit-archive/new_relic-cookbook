@@ -1,4 +1,4 @@
-template node['new_relic']['config']['file_path'] do
+template node['new_relic']['app_agent']['config']['file_path'] do
   source 'newrelic.yml.erb'
-  variables :config_var => node['new_relic']['config']
+  variables :config_var => node['new_relic']['app_agent']['config']
 end
