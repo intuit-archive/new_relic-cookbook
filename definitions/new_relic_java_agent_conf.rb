@@ -1,5 +1,5 @@
 define :new_relic_java_agent_config do
-  node['new_relic']['app_agent']['config']['file_path'] = params[:name]
+  node.set['new_relic']['app_agent']['config']['file_path'] = params[:name]
 
   template node['new_relic']['app_agent']['config']['file_path'] do
     backup false
