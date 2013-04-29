@@ -18,7 +18,7 @@ template node['new_relic']['server_monitor']['config_file'] do
   group 'newrelic'
   mode '0640'
   source 'nrsysmond.cfg.erb'
-  variables :license_key => node['new_relic']['app_agent']['config']['license_key'],
+  variables :license_key => node['new_relic']['license_key'],
             :log_file    => node['new_relic']['server_monitor']['log_file'],
             :ssl         => node['new_relic']['server_monitor']['ssl']
   notifies :restart,
