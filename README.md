@@ -12,23 +12,23 @@ Add this to your run list
 
 # Attributes
 ## Default
-`node['new_relic']['app_agent']['config']['apdex_t']` - Default value: '0.5'
+`node['new_relic']['license_key']` - Default value: 'change_me'
 
-`node['new_relic']['app_agent']['config']['app_name']` - Default value: 'change_me'
+`node['new_relic']['app_agent']['apdex_t']` - Default value: '0.5'
 
-`node['new_relic']['app_agent']['config']['capture_params']` - Default value: false
+`node['new_relic']['app_agent']['app_name']` - Default value: 'change_me'
 
-`node['new_relic']['app_agent']['config']['developer_mode']` - Default value: false
+`node['new_relic']['app_agent']['capture_params']` - Default value: false
 
-`node['new_relic']['app_agent']['config']['file_path']` - Default value: 'change_me'
+`node['new_relic']['app_agent']['developer_mode']` - Default value: false
 
-`node['new_relic']['app_agent']['config']['license_key']` - Default value: 'change_me'
+`node['new_relic']['app_agent']['file_path']` - Default value: 'change_me'
 
-`node['new_relic']['app_agent']['config']['log_level']` - Default value: 'info'
+`node['new_relic']['app_agent']['log_level']` - Default value: 'info'
 
-`node['new_relic']['app_agent']['config']['monitor_mode']`   Default value: true
+`node['new_relic']['app_agent']['monitor_mode']`   Default value: true
 
-`node['new_relic']['app_agent']['config']['ssl']` Default value: true
+`node['new_relic']['app_agent']['ssl']` Default value: true
 
 `node['new_relic']['server_monitor']['config_file']` - config file location, default value: '/etc/newrelic/nrsysmond.cfg'
 
