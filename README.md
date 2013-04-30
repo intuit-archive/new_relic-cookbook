@@ -22,7 +22,7 @@ Add this to your run list
 
 `node['new_relic']['app_agent']['developer_mode']` - Default value: false
 
-`node['new_relic']['app_agent']['file_path']` - Default value: 'change_me'
+`node['new_relic']['app_agent']['config_file']` - Default value: 'change_me'
 
 `node['new_relic']['app_agent']['log_level']` - Default value: 'info'
 
