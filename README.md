@@ -74,7 +74,7 @@ Creates a new deployment marker in new relic by executing "bundle exec newrelic 
 
 ## java_deployment_record
 ### create
-Creates a new deployment marker in new relic leveraging "java -jar command_path deployment" with provided options.
+Creates a new deployment marker in new relic executing new relic jar via "java -jar command_path deployment" with provided options.
 
     new_relic_java_deployment_record "app_name" do
       action :create
