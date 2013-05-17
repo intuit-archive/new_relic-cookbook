@@ -67,7 +67,6 @@ Creates a new deployment marker in new relic by executing "bundle exec newrelic 
       app_name "value to pass as --appname"
       cwd "directory to change to before executing command"
       environment "value to pass as --environment"
-      ignore_errors "return true even if posting to new relic fails"
       revision "value to pass to --revision"
       user "value to -pass as --user"
     end
@@ -81,7 +80,6 @@ Creates a new deployment marker in new relic executing new relic jar via "java -
       app_name "value to pass as --appname"
       command_path "path to newrelic jar"
       environment "value to pass as --environment"
-      ignore_errors "return true even if posting to new relic fails"
       revision "value to pass to --revision"
       user "value to -pass as --user"
     end

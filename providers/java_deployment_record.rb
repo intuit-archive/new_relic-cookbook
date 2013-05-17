@@ -12,7 +12,6 @@ def command_to_run
   command = "java -jar #{new_resource.command_path} deployment"
   command << " --user #{new_resource.user}"
   command << [app_name, environment, revision].join
-  command << "; true" if new_resource.ignore_errors
 end
 
 def app_name
