@@ -4,7 +4,7 @@ action :create do
 
   execute 'mark deployment in new relic' do
     command cmd
-    ignore_failue new_resource.ignore_failure
+    ignore_failure new_resource.ignore_failure
   end
 end
 
