@@ -57,7 +57,7 @@ new_relic::ruby_agent
 Installs and configures the new_relic server agent
 new_relic::server_monitor
 
-# Providers
+# LWRPs
 ## ruby_deployment_record
 ### create
 Creates a new deployment marker in new relic by executing "bundle exec newrelic deployment" with provided options.
@@ -68,7 +68,7 @@ Creates a new deployment marker in new relic by executing "bundle exec newrelic 
       cwd "directory to change to before executing command"
       environment "value to pass as --environment"
       revision "value to pass to --revision"
-      user "value to -pass as --user"
+      user "value to pass as --user"
     end
 
 ## java_deployment_record
@@ -81,7 +81,7 @@ Creates a new deployment marker in new relic executing new relic jar via "java -
       command_path "path to newrelic jar"
       environment "value to pass as --environment"
       revision "value to pass to --revision"
-      user "value to -pass as --user"
+      user "value to pass as --user"
     end
 
 # Author
