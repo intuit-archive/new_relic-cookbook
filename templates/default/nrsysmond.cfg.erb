@@ -52,6 +52,9 @@ logfile=<%= @log_file %>
 ## Default: none (use a direct connection)
 ##
 ##proxy=
+<% if @proxy %>
+proxy=<%= @proxy %>
+<% end %>
 #
 ##
 ## Option : ssl

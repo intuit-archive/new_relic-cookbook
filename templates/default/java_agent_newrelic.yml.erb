@@ -92,6 +92,11 @@ common: &default_settings
   # proxy_port: 8080
   # proxy_user: username
   # proxy_password: password
+<% %w(host port user password).each do |item| %>
+  <% if @config_var[item] %>
+    <%= "  proxy_#{item}: #{@config_var[item]}" %>
+  <% end %>
+<% end %>
 
   # Tells transaction tracer and error collector (when enabled)
   # whether or not to capture HTTP params.  When true, frameworks can
