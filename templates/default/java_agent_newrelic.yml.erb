@@ -93,8 +93,8 @@ common: &default_settings
   # proxy_user: username
   # proxy_password: password
 <% %w(host port user password).each do |item| %>
-  <% if @config_var[item] %>
-<%= "proxy_#{item}: #{@config_var[item]}" %>
+  <% if @config_var["proxy_#{item}"] %>
+<%= "proxy_#{item}: #{@config_var["#{@config_var}_item"]}" %>
   <% end %>
 <% end %>
 
