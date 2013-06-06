@@ -8,7 +8,14 @@ Platform:
 * RHEL 6.x
 
 # Usage
-Add this to your run list
+## Ruby Agent
+Add `recipe[new_relic::ruby_agent]` to your run list.
+
+## Java Agent
+Add `recipe[new_relic::java_agent]` to your run list.
+
+## Server Monitor Agent
+Add `recipe[new_relic::server_monitor]` to your run list.
 
 # Attributes
 ## Default
