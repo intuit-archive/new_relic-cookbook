@@ -52,7 +52,7 @@ logfile=<%= @log_file %>
 ## Default: none (use a direct connection)
 ##
 ##proxy=
-<% if @proxy %>
+<% if @config['proxy']['enabled'] %>
 proxy=<%= @proxy %>
 <% end %>
 #
