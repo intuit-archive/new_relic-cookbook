@@ -1,3 +1,5 @@
+require 'uri'
+
 package node['new_relic']['server_monitor']['package_name'] do
   version node['new_relic']['server_monitor']['version']
 end
