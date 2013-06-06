@@ -14,10 +14,6 @@ default['new_relic']['app_agent']['config_file']    = 'change_me'
 default['new_relic']['app_agent']['developer_mode'] = false
 default['new_relic']['app_agent']['log_level']      = 'info'
 default['new_relic']['app_agent']['monitor_mode']   = true
-default['new_relic']['app_agent']['proxy_host']     = nil
-default['new_relic']['app_agent']['proxy_port']     = nil
-default['new_relic']['app_agent']['proxy_user']     = nil
-default['new_relic']['app_agent']['proxy_password'] = nil
 default['new_relic']['app_agent']['ssl']            = true
 
 default['new_relic']['server_monitor']['config_file']  = '/etc/newrelic/nrsysmond.cfg'
