@@ -19,7 +19,7 @@ proxy     = node['new_relic']['proxy'].to_hash
 proxy_url = URI::HTTP.build(:scheme   => proxy['scheme'],
                             :userinfo => "#{proxy['user']}:#{proxy['password']}",
                             :host     => proxy['host'],
-                            :port     => proxy['port']).to_s
+                            :port     => proxy['port'].to_i).to_s
 
 template node['new_relic']['server_monitor']['config_file'] do
   owner 'root'
