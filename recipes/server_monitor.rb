@@ -1,5 +1,3 @@
-require 'uri'
-
 package node['new_relic']['server_monitor']['package_name'] do
   version node['new_relic']['server_monitor']['version']
 end
@@ -16,11 +14,7 @@ service node['new_relic']['server_monitor']['service_name'] do
 end
 
 if node['new_relic']['proxy']['enabled']
-  proxy     = node['new_relic']['proxy'].to_hash
-  proxy_url = URI::HTTP.build(:scheme   => proxy['scheme'],
-                              :userinfo => "#{proxy['user']}:#{proxy['password']}",
-                              :host     => proxy['host'],
-                              :port     => proxy['port'].to_i).to_s
+  proxy_url = NewRelicHTTPProxy.new(node['new_relic']['proxy'].to_hash).to_url
 end
 
 template node['new_relic']['server_monitor']['config_file'] do
