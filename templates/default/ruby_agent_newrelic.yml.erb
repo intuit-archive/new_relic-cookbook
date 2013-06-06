@@ -29,22 +29,22 @@ common: &default_settings
   # "All UI" then specify a semicolon-separated list of up to three
   # distinct names.  If you comment this out, it defaults to the
   # capitalized RAILS_ENV (i.e., Production, Staging, etc)
-  app_name: <%= @config_var['app_name'] %>
+  app_name: <%= @config['app_name'] %>
 
   # When "true", the agent collects performance data about your
   # application and reports this data to the New Relic service at
   # newrelic.com. This global switch is normally overridden for each
   # environment below. (formerly called 'enabled')
-  monitor_mode: <%= @config_var['monitor_mode'].to_s %>
+  monitor_mode: <%= @config['monitor_mode'].to_s %>
 
   # Developer mode should be off in every environment but
   # development as it has very high overhead in memory.
-  developer_mode: <%= @config_var['developer_mode'].to_s %>
+  developer_mode: <%= @config['developer_mode'].to_s %>
 
   # The newrelic agent generates its own log file to keep its logging
   # information separate from that of your application.  Specify its
   # log level here.
-  log_level: <%= @config_var['log_level'] %>
+  log_level: <%= @config['log_level'] %>
 
   # The newrelic agent communicates with the New Relic service via http by
   # default.  If you want to communicate via https to increase
@@ -53,7 +53,7 @@ common: &default_settings
   # encryption involved in SSL communication, but this work is done
   # asynchronously to the threads that process your application code,
   # so it should not impact response times.
-  ssl: <%= @config_var['ssl'] %>
+  ssl: <%= @config['ssl'] %>
 
   # EXPERIMENTAL: enable verification of the SSL certificate sent by
   # the server. This setting has no effect unless SSL is enabled
@@ -75,7 +75,7 @@ common: &default_settings
   # value as Frustrating transactions.
   # For more about the Apdex standard, see
   # http://newrelic.com/docs/general/apdex
-  apdex_t: <%= @config_var['apdex_t'] %>
+  apdex_t: <%= @config['apdex_t'] %>
 
   # Proxy settings for connecting to the New Relic server.
   #
@@ -99,7 +99,7 @@ common: &default_settings
   # Java: create a config setting called "ignored_params" and set it to
   #     a comma separated list of HTTP parameter names.
   #     ex: ignored_params: credit_card, ssn, password
-  capture_params: <%= @config_var['capture_params'].to_s %>
+  capture_params: <%= @config['capture_params'].to_s %>
 
   # Transaction tracer captures deep information about slow
   # transactions and sends this to the New Relic service once a

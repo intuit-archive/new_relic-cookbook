@@ -40,14 +40,14 @@ common: &default_settings
   # For example, to report data to"My Application" and "My Application 2" use this:
   # app_name: My Application;My Application 2
   # This setting is required.
-  app_name: <%= @config_var['app_name'] %>
+  app_name: <%= @config['app_name'] %>
 
   # The agent uses its own log file to keep its logging
   # separate from that of your application.  Specify the log level here.
   # This setting is dynamic, so changes do not require restarting your application.
   # The levels in increasing order of verboseness are: off, severe, warning, info, fine, finer, finest
   # Default is info.
-  log_level: <%= @config_var['log_level'] %>
+  log_level: <%= @config['log_level'] %>
 
   # Log all data to and from New Relic in plain text.
   # This setting is dynamic, so changes do not require restarting your application.
@@ -69,7 +69,7 @@ common: &default_settings
   # The log file directory.
   # Default is the logs directory in the newrelic.jar parent directory.
   #log_file_path:
-  log_file_path: <%= @config_var['log_file_dir'] %>
+  log_file_path: <%= @config['log_file_dir'] %>
 
   # The agent communicates with New Relic via http by
   # default.  If you want to communicate via https to increase
@@ -79,7 +79,7 @@ common: &default_settings
   # asynchronously to the threads that process your application code,
   # so it should not impact response times.
   # Default is false.
-  ssl: <%= @config_var['ssl'] %>
+  ssl: <%= @config['ssl'] %>
 
   # Proxy settings for connecting to the New Relic server.
   #
@@ -102,7 +102,7 @@ common: &default_settings
   # whether or not to capture HTTP params.  When true, frameworks can
   # exclude HTTP parameters from being captured.
   # Default is false.
-  capture_params: <%= @config_var['capture_params'].to_s %>
+  capture_params: <%= @config['capture_params'].to_s %>
 
   # Tells transaction tracer and error collector to not to collect
   # specific http request parameters.
