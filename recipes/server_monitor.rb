@@ -26,8 +26,9 @@ template node['new_relic']['server_monitor']['config_file'] do
   group 'newrelic'
   mode '0640'
   source 'nrsysmond.cfg.erb'
-  variables :config => node['new_relic'],
-            :proxy  => proxy_url
+  variables :config      => node['new_relic']['server_monitor'],
+            :license_key => node['new_relic']['license_key'],
+            :proxy       => proxy_url
   notifies :restart,
            resources(:service => node['new_relic']['server_monitor']['service_name'])
 end
