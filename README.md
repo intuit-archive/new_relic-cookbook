@@ -1,4 +1,4 @@
-# new_relic-cookbook cookbook
+# New Relic Cookbook
 
 # Requirements
 * Chef 10.x
@@ -53,7 +53,7 @@ Add this to your run list
 
 # Recipes
 ## java_agent
-Configures the new_relicy java app agent. It is expected that you have bundled
+Configures the new_relic java app agent. It is expected that you have bundled
 the java agent with your app.
 
 ## ruby_agent
