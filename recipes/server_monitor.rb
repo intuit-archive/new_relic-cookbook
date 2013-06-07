@@ -13,6 +13,8 @@ service node['new_relic']['server_monitor']['service_name'] do
   supports :status => true, :restart => true
 end
 
+full_proxy_url = proxy_url(node['new_relic']['proxy'].to_hash)
+
 template node['new_relic']['server_monitor']['config_file'] do
   owner 'root'
   group 'newrelic'
@@ -21,7 +23,7 @@ template node['new_relic']['server_monitor']['config_file'] do
   variables :config        => node['new_relic']['server_monitor'],
             :license_key   => node['new_relic']['license_key'],
             :proxy_enabled => node['new_relic']['proxy']['enabled'],
-            :proxy_url     => proxy_url(node['new_relic']['proxy'].to_hash)
+            :proxy_url     => full_proxy_url
   notifies :restart,
            resources(:service => node['new_relic']['server_monitor']['service_name'])
 end
