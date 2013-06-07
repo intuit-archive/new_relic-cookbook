@@ -2,7 +2,11 @@ require 'spec_helper'
 
 describe NewRelicHttpProxy do
 
-  describe 'to_url' do
+  describe 'proxy_url' do
+    let(:object) do
+      Object.new.extend(NewRelicHttpProxy)
+    end
+
     let(:args) do
       {
         'host'     => 'foo.example.com',
@@ -12,9 +16,17 @@ describe NewRelicHttpProxy do
         'password' => 'rock'
       }
     end
-    subject { NewRelicHttpProxy.new(args) }
+    subject { :object }
 
-    its(:to_url) { should eq 'http://bob:rock@foo.example.com:8080' }
+    it 'returns the proxy url' do
+      object.proxy_url(args).should eq 'http://bob:rock@foo.example.com:8080'
+    end
+
+    context 'when passing in empty args' do
+      it 'should return an empty string' do
+        object.proxy_url({}).should eq ''
+      end
+    end
 
   end
 
