@@ -1,4 +1,6 @@
 ## head:
+
+## 0.3.0 (06/07/2013):
 * add proxy support for app and server monitor agents
 
 ## 0.2.0 (05/04/2013):
