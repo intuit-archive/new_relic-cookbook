@@ -1,12 +1,9 @@
 require 'uri'
 
-class NewRelicHttpProxy
+module NewRelicHttpProxy
 
-  def initialize(args={})
-    @args = args
-  end
-
-  def to_url
+  def proxy_url(args={})
+    return '' if args.empty?
     u = URI::HTTP.build :scheme   => args['scheme'],
                         :userinfo => "#{args['user']}:#{args['password']}",
                         :host     => args['host'],
@@ -14,7 +11,8 @@ class NewRelicHttpProxy
     u.to_s
   end
 
-  private
-  attr_accessor :args
+end
 
+class Chef::Recipe
+  include NewRelicHttpProxy
 end
