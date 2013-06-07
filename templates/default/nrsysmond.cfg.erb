@@ -38,7 +38,7 @@ license_key=<%= @license_key %>
 ## Default: none. However it is highly recommended you set a value for this.
 ## Note   : Can also be set with the -l command line option.
 ##
-logfile=<%= @log_file %>
+logfile=<%= @config['log_file'] %>
 #
 ##
 ## Option : proxy
@@ -52,6 +52,9 @@ logfile=<%= @log_file %>
 ## Default: none (use a direct connection)
 ##
 ##proxy=
+<% if @proxy_enabled %>
+proxy=<%= @proxy_url %>
+<% end %>
 #
 ##
 ## Option : ssl
@@ -62,7 +65,7 @@ logfile=<%= @log_file %>
 ## Default: false
 ##
 ##ssl=false
-ssl=<%= @ssl %>
+ssl=<%= @config['ssl'] %>
 #
 ##
 ## Option : ssl_ca_bundle
@@ -96,7 +99,7 @@ ssl=<%= @ssl %>
 ## Default: /tmp/nrsysmond.pid
 ## Note   : Can also be set with the -p command line option.
 ##
-pidfile=/var/run/newrelic/nrsysmond.pid
+pidfile=<%= @config['pid_file'] %>
 #
 ##
 ## Option : collector_host

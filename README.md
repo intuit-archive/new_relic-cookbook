@@ -1,4 +1,4 @@
-# new_relic-cookbook cookbook
+# New Relic Cookbook
 
 # Requirements
 * Chef 10.x
@@ -8,11 +8,25 @@ Platform:
 * RHEL 6.x
 
 # Usage
-Add this to your run list
+## Ruby Agent
+Add `recipe[new_relic::ruby_agent]` to your run list.
+
+## Java Agent
+Add `recipe[new_relic::java_agent]` to your run list.
+
+## Server Monitor Agent
+Add `recipe[new_relic::server_monitor]` to your run list.
 
 # Attributes
 ## Default
 `node['new_relic']['license_key']` - Default value: 'change_me'
+
+`node['new_relic']['proxy']['enabled']` - Default value: false
+`node['new_relic']['proxy']['host']` - Default value: nil
+`node['new_relic']['proxy']['port']` - Default value: nil
+`node['new_relic']['proxy']['user']` - Default value: nil
+`node['new_relic']['proxy']['password']` - Default value: nil
+`node['new_relic']['proxy']['scheme']` - Default value: 'http'
 
 `node['new_relic']['app_agent']['apdex_t']` - Default value: '0.5'
 
@@ -46,21 +60,23 @@ Add this to your run list
 
 # Recipes
 ## java_agent
-Installs and configures the new_relicy java app agent
-new_relic::java_agent
+Configures the new_relic java app agent. It is expected that you have bundled
+the java agent with your app.
 
 ## ruby_agent
-Installs and configures the new_relic ruby app agent
-new_relic::ruby_agent
+Configures the new_relic ruby app agent. It is expected that you have bundled
+the ruby agent with your app.
 
 ## server_monitor
-Installs and configures the new_relic server agent
-new_relic::server_monitor
+Installs and configures the new_relic server monitor agent. This assumes that
+the server monitor package is available through your own yum repository.
+
 
 # LWRPs
 ## ruby_deployment_record
 ### create
-Creates a new deployment marker in new relic by executing "bundle exec newrelic deployment" with provided options.
+Creates a new deployment marker in new relic by executing "bundle exec newrelic deployment" with provided options. ```NOTE: this currently does not support
+working through a proxy```
 
     new_relic_ruby_deployment_record "app_name" do
       action :create
@@ -73,7 +89,8 @@ Creates a new deployment marker in new relic by executing "bundle exec newrelic 
 
 ## java_deployment_record
 ### create
-Creates a new deployment marker in new relic executing new relic jar via "java -jar command_path deployment" with provided options.
+Creates a new deployment marker in new relic executing new relic jar via "java -jar command_path deployment" with provided options. ```NOTE: this currently
+does not support working through a proxy```
 
     new_relic_java_deployment_record "app_name" do
       action :create
