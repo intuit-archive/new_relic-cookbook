@@ -13,16 +13,21 @@ service node['new_relic']['server_monitor']['service_name'] do
   supports :status => true, :restart => true
 end
 
+if node['new_relic']['proxy']['enabled']
+  proxy_url = NewRelicHTTPProxy.new(node['new_relic']['proxy'].to_hash).to_url
+end
+
 template node['new_relic']['server_monitor']['config_file'] do
   owner 'root'
   group 'newrelic'
   mode '0640'
   source 'nrsysmond.cfg.erb'
-  variables :license_key => node['new_relic']['license_key'],
-            :log_file    => node['new_relic']['server_monitor']['log_file'],
-            :ssl         => node['new_relic']['server_monitor']['ssl']
+  variables :config        => node['new_relic']['server_monitor'],
+            :license_key   => node['new_relic']['license_key'],
+            :proxy_enabled => node['new_relic']['proxy']['enabled'],
+            :proxy_url     => proxy_url
   notifies :restart,
-            resources(:service => node['new_relic']['server_monitor']['service_name'])
+           resources(:service => node['new_relic']['server_monitor']['service_name'])
 end
 
 service node['new_relic']['server_monitor']['service_name'] do

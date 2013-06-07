@@ -1,4 +1,5 @@
 ## head:
+* add proxy support for app and server monitor agents
 
 ## 0.2.0 (05/04/2013):
 * add support to deployment LWRP for ignorning failures
