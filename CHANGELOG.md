@@ -1,4 +1,6 @@
 ## head:
+
+## 0.3.1(06/07/2013):
 * internal refactor of proxy handling for server monitor agent
 
 ## 0.3.0 (06/07/2013):
