@@ -89,14 +89,16 @@ working through a proxy```
 
 ## java_deployment_record
 ### create
-Creates a new deployment marker in new relic executing new relic jar via "java -jar command_path deployment" with provided options. ```NOTE: this currently
-does not support working through a proxy```
+Creates a new deployment marker in new relic executing new relic jar via "java -jar command_path deployment" with provided options.
 
     new_relic_java_deployment_record "app_name" do
       action :create
       app_name "value to pass as --appname"
       command_path "path to newrelic jar"
       environment "value to pass as --environment"
+      proxy true
+      proxy_host myhost.example.com
+      proxy_port 8080
       revision "value to pass to --revision"
       user "value to pass as --user"
     end

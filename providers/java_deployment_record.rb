@@ -10,7 +10,8 @@ end
 
 private
 def command_to_run
-  command = "java -jar #{new_resource.command_path} deployment"
+  command = "java #{proxy_settings}"
+  command << " -jar #{new_resource.command_path} deployment"
   command << " --user #{new_resource.user}"
   command << [app_name, environment, revision].join
 end
@@ -23,6 +24,21 @@ end
 def environment
   return '' if new_resource.environment.nil? || new_resource.environment.empty?
   " --environment #{new_resource.environment}"
+end
+
+def proxy_host
+  new_resource.proxy_host
+end
+
+def proxy_port
+  new_resource.proxy_port
+end
+
+def proxy_settings
+  return '' unless new_resource.proxy
+  proxy_config = "-Dhttps.proxySet=true"
+  proxy_config << " -Dhttps.proxyHost=#{proxy_host}"
+  proxy_config << " -Dhttps.proxyPort=#{proxy_port}"
 end
 
 def revision
