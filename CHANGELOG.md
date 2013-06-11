@@ -1,7 +1,9 @@
 ## head:
+
+## 0.4.0 (06/11/2013):
 * add proxy support to java deployment record LWRP
 
-## 0.3.1(06/07/2013):
+## 0.3.1 (06/07/2013):
 * internal refactor of proxy handling for server monitor agent
 
 ## 0.3.0 (06/07/2013):
