@@ -6,6 +6,8 @@ action :create do
     command cmd
     ignore_failure new_resource.ignore_failure
   end
+  
+  new_resource.updated_by_last_action(true)
 end
 
 private
