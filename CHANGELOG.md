@@ -1,4 +1,5 @@
 ## head:
+* have LWRPs set updated by last action
 
 ## 0.4.0 (06/11/2013):
 * add proxy support to java deployment record LWRP
