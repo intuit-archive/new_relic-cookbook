@@ -1,5 +1,5 @@
 action :create do
-  node.set['new_relic']['app_agent']['config_file'] = params[:name]
+  node.set['new_relic']['app_agent']['config_file'] = new_resource.name
 
   template node['new_relic']['app_agent']['config_file'] do
     source 'ruby_agent_newrelic.yml.erb'
