@@ -1,21 +1,18 @@
 # New Relic Cookbook
 
 # Requirements
-* Chef 10.x
+* Chef 10.x or greater
 
 Platform:
 * CentOS 6.x
 * RHEL 6.x
 
 # Usage
-## Ruby Agent
-Add `recipe[new_relic::ruby_agent]` to your run list.
-
-## Java Agent
-Add `recipe[new_relic::java_agent]` to your run list.
-
 ## Server Monitor Agent
 Add `recipe[new_relic::server_monitor]` to your run list.
+
+## LWRPs
+Ensure `new_relic` cookbook is added to `cookbook_path`
 
 # Attributes
 ## Default
@@ -59,50 +56,134 @@ Add `recipe[new_relic::server_monitor]` to your run list.
 `node['new_relic']['server_monitor']['version']` - Version of the rpm that is installed, default value: latest version
 
 # Recipes
-## java_agent
-Configures the new_relic java app agent. It is expected that you have bundled
-the java agent with your app.
-
-## ruby_agent
-Configures the new_relic ruby app agent. It is expected that you have bundled
-the ruby agent with your app.
-
 ## server_monitor
 Installs and configures the new_relic server monitor agent. This assumes that
 the server monitor package is available through your own yum repository.
 
-
 # LWRPs
+## java_agent_config
+Configures the new_relic java app agent. It is expected that you have bundled
+the java agent with your app.
+
+- `:create` adds your New Relic YAML config to path specified by `name`
+
+### LWRP attributes:
+* `name`
+  * used to specify the absolute path of filename and location
+* `cookbook`
+  * specifies which cookbook to get template file from.  `default` is `new_relic`
+
+### Example
+``` ruby
+java_agent_config "/my_app_root/config/newrelic.yml"
+```
+
+## java_deployment_record
+Creates a new deployment marker in new relic executing new relic jar via "java -jar command_path deployment" with provided options.
+
+- `:create` adds a deployment marker for your app name specified by `name`
+
+### LWRP attributes:
+* `app_name`
+  * the name of your application
+* `command_path`
+  * absolute path and filename of deployment marker jar. `required` is `true`
+* `environment`
+  * environment in New Relic that node belongs to
+* `proxy`
+  * use proxy to execute deployment marker call. `default` is `false`
+* `proxy_host`
+  * proxy host name or ip
+* `proxy_port`
+  * proxy port
+* `revision`
+  * revision id of deployment marker
+* `user`
+  * user executing the deployment marker call. `default` is `ENV['SUDO_USER'] || ENV['USER'] || root`
+
+### Example
+
+``` ruby
+new_relic_java_deployment_record "app_name" do
+  action :create
+  app_name "value to pass as --appname"
+  command_path "path to newrelic jar"
+  environment "value to pass as --environment"
+  proxy true
+  proxy_host myhost.example.com
+  proxy_port 8080
+  revision "value to pass to --revision"
+  user "value to pass as --user"
+end
+```
+
+## ruby_agent_config
+Configures the new_relic ruby app agent. It is expected that you have bundled
+the ruby agent with your app.
+
+- `:create` adds your New Relic YAML config to path specified by `name`
+
+### LWRP attributes:
+* `name`
+  * used to specify the absolute path of filename and location
+* `cookbook`
+  * specifies which cookbook to get template file from.  `default` is `new_relic`
+
+### Example
+``` ruby
+ruby_agent_config "/my_app_root/config/newrelic.yml"
+```
+
 ## ruby_deployment_record
-### create
 Creates a new deployment marker in new relic by executing "bundle exec newrelic deployment" with provided options. ```NOTE: this currently does not support
 working through a proxy```
 
-    new_relic_ruby_deployment_record "app_name" do
-      action :create
-      app_name "value to pass as --appname"
-      cwd "directory to change to before executing command"
-      environment "value to pass as --environment"
-      revision "value to pass to --revision"
-      user "value to pass as --user"
-    end
+- `:create` adds a deployment marker for your application
 
-## java_deployment_record
-### create
-Creates a new deployment marker in new relic executing new relic jar via "java -jar command_path deployment" with provided options.
+### LWRP attributes:
+* `app_name`
+  * the name of your application
+* `command_path`
+  * absolute path and filename of deployment marker jar. `required` is `true`
+* `environment`
+  * environment in New Relic that node belongs to
+* `proxy`
+  * use proxy to execute deployment marker call. `default` is `false`
+* `proxy_host`
+  * proxy host name or ip
+* `proxy_port`
+  * proxy port
+* `revision`
+  * revision id of deployment marker
+* `user`
+  * user executing the deployment marker call. `default` is `ENV['SUDO_USER'] || ENV['USER'] || root`
 
-    new_relic_java_deployment_record "app_name" do
-      action :create
-      app_name "value to pass as --appname"
-      command_path "path to newrelic jar"
-      environment "value to pass as --environment"
-      proxy true
-      proxy_host myhost.example.com
-      proxy_port 8080
-      revision "value to pass to --revision"
-      user "value to pass as --user"
-    end
+### Example
+
+``` ruby
+new_relic_ruby_deployment_record "app_name" do
+  action :create
+  app_name "value to pass as --appname"
+  cwd "directory to change to before executing command"
+  environment "value to pass as --environment"
+  revision "value to pass to --revision"
+  user "value to pass as --user"
+end
+```
 
 # Author
 
-Author:: Intuit, Inc. (<kevin_young@intuit.com>)
+- Author:: Kevin Young (<kevin_young@intuit.com>)
+- Copyright:: 2013, Intuit, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
