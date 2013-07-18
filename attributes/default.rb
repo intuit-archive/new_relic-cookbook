@@ -10,7 +10,6 @@ default['new_relic']['proxy']['scheme']   = 'http'
 default['new_relic']['app_agent']['apdex_t']        = '0.5'
 default['new_relic']['app_agent']['app_name']       = 'change_me'
 default['new_relic']['app_agent']['capture_params'] = false
-default['new_relic']['app_agent']['config_file']    = 'change_me'
 default['new_relic']['app_agent']['developer_mode'] = false
 default['new_relic']['app_agent']['log_level']      = 'info'
 default['new_relic']['app_agent']['monitor_mode']   = true

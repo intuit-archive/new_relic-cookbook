@@ -12,7 +12,7 @@ Platform:
 Add `recipe[new_relic::server_monitor]` to your run list.
 
 ## LWRPs
-Ensure `new_relic` cookbook is added to `cookbook_path`
+Ensure `recipe[new_relic]` is in run_list.
 
 # Attributes
 ## Default
@@ -61,21 +61,45 @@ Installs and configures the new_relic server monitor agent. This assumes that
 the server monitor package is available through your own yum repository.
 
 # LWRPs
-## java_agent_config
-Configures the new_relic java app agent. It is expected that you have bundled
-the java agent with your app.
+## app_agent_config
+Configures the new_relic app agent. It is expected that you have bundled
+the agent with your app.
 
-- `:create` adds your New Relic YAML config to path specified by `name`
+### Actions:
+- default action: `:create`
+- `:create` adds your New Relic YAML config to path specified by `full_path`
+
+### Provider Options:
+* ruby
+* java
+
+### Associated Attributes:
+#### required
+`node['new_relic']['app_agent']` (please review app_agent attributes section above)
+`node['new_relic']['license_key']`
+
+#### optional
+`node['new_relic']['proxy']` (please review proxy attributes section above)
 
 ### LWRP attributes:
-* `name`
-  * used to specify the absolute path of filename and location
+* `full_path`, `name_attribute => true`
+  * used to specify the absolute path of your New Relic YAML config file
 * `cookbook`
   * specifies which cookbook to get template file from.  `default` is `new_relic`
 
-### Example
+### Examples
+Calling java provider using Ruby class call.
 ``` ruby
-java_agent_config "/my_app_root/config/newrelic.yml"
+app_agent_config "/my_app_root/config/newrelic.yml" do
+  provider NewRelic::AppAgentConfig::Java
+end
+```
+
+Calling ruby provider using Ruby class call.
+``` ruby
+app_agent_config "/my_app_root/config/newrelic.yml" do
+  provider ruby
+end
 ```
 
 ## java_deployment_record
@@ -115,23 +139,6 @@ new_relic_java_deployment_record "app_name" do
   revision "value to pass to --revision"
   user "value to pass as --user"
 end
-```
-
-## ruby_agent_config
-Configures the new_relic ruby app agent. It is expected that you have bundled
-the ruby agent with your app.
-
-- `:create` adds your New Relic YAML config to path specified by `name`
-
-### LWRP attributes:
-* `name`
-  * used to specify the absolute path of filename and location
-* `cookbook`
-  * specifies which cookbook to get template file from.  `default` is `new_relic`
-
-### Example
-``` ruby
-ruby_agent_config "/my_app_root/config/newrelic.yml"
 ```
 
 ## ruby_deployment_record
