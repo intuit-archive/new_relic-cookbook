@@ -70,8 +70,8 @@ the agent with your app.
 - `:create` adds your New Relic YAML config to path specified by `full_path`
 
 ### Provider Options:
-* ruby
-* java
+* Chef::Provider::NewRelicRubyAppAgentConfig
+* Chef::Provider::NewRelicJavaAppAgentConfig
 
 ### Associated Attributes:
 #### required
@@ -87,18 +87,10 @@ the agent with your app.
 * `cookbook`
   * specifies which cookbook to get template file from.  `default` is `new_relic`
 
-### Examples
-Calling java provider using Ruby class call.
+### Example
 ``` ruby
 app_agent_config "/my_app_root/config/newrelic.yml" do
-  provider NewRelic::AppAgentConfig::Java
-end
-```
-
-Calling ruby provider using Ruby class call.
-``` ruby
-app_agent_config "/my_app_root/config/newrelic.yml" do
-  provider ruby
+  provider Chef::Provider::NewRelicRubyAppAgentConfig
 end
 ```
 
