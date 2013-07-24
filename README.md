@@ -19,10 +19,15 @@ Ensure `recipe[new_relic]` is in run_list.
 `node['new_relic']['license_key']` - Default value: 'change_me'
 
 `node['new_relic']['proxy']['enabled']` - Default value: false
+
 `node['new_relic']['proxy']['host']` - Default value: nil
+
 `node['new_relic']['proxy']['port']` - Default value: nil
+
 `node['new_relic']['proxy']['user']` - Default value: nil
+
 `node['new_relic']['proxy']['password']` - Default value: nil
+
 `node['new_relic']['proxy']['scheme']` - Default value: 'http'
 
 `node['new_relic']['app_agent']['apdex_t']` - Default value: '0.5'
@@ -76,16 +81,15 @@ the agent with your app.
 ### Associated Attributes:
 #### required
 `node['new_relic']['app_agent']` (please review app_agent attributes section above)
+
 `node['new_relic']['license_key']`
 
 #### optional
 `node['new_relic']['proxy']` (please review proxy attributes section above)
 
 ### LWRP attributes:
-* `full_path`, `name_attribute => true`
-  * used to specify the absolute path of your New Relic YAML config file
-* `cookbook`
-  * specifies which cookbook to get template file from.  `default` is `new_relic`
+* `full_path` - specifies the absolute path to the new relic config file, default value: name of the resource
+* `cookbook` - specifies which cookbook to get template file from.  default is `new_relic`
 
 ### Example
 ``` ruby
@@ -100,22 +104,14 @@ Creates a new deployment marker in new relic executing new relic jar via "java -
 - `:create` adds a deployment marker for your app name specified by `name`
 
 ### LWRP attributes:
-* `app_name`
-  * the name of your application
-* `command_path`
-  * absolute path and filename of deployment marker jar. `required` is `true`
-* `environment`
-  * environment in New Relic that node belongs to
-* `proxy`
-  * use proxy to execute deployment marker call. `default` is `false`
-* `proxy_host`
-  * proxy host name or ip
-* `proxy_port`
-  * proxy port
-* `revision`
-  * revision id of deployment marker
-* `user`
-  * user executing the deployment marker call. `default` is `ENV['SUDO_USER'] || ENV['USER'] || root`
+* `app_name` - the name of your application
+* `command_path` - absolute path and filename of deployment marker jar. (required)
+* `environment` - environment in New Relic that node belongs to
+* `proxy` - use proxy to execute deployment marker call. The default is false.
+* `proxy_host` - proxy host name or ip
+* `proxy_port` - proxy port
+* `revision` - revision id of deployment marker
+* `user` - user executing the deployment marker call. This attribute looks to see if there is a SUDO_USER environment variable.  If not, it looks to see if there is a USER environment variable.  If not, it will use 'root'.
 
 ### Example
 
@@ -134,28 +130,20 @@ end
 ```
 
 ## ruby_deployment_record
-Creates a new deployment marker in new relic by executing "bundle exec newrelic deployment" with provided options. ```NOTE: this currently does not support
+Creates a new deployment marker in new relic by executing `bundle exec newrelic deployment` with provided options. ```NOTE: this currently does not support
 working through a proxy```
 
 - `:create` adds a deployment marker for your application
 
 ### LWRP attributes:
-* `app_name`
-  * the name of your application
-* `command_path`
-  * absolute path and filename of deployment marker jar. `required` is `true`
-* `environment`
-  * environment in New Relic that node belongs to
-* `proxy`
-  * use proxy to execute deployment marker call. `default` is `false`
-* `proxy_host`
-  * proxy host name or ip
-* `proxy_port`
-  * proxy port
-* `revision`
-  * revision id of deployment marker
-* `user`
-  * user executing the deployment marker call. `default` is `ENV['SUDO_USER'] || ENV['USER'] || root`
+* `app_name` - the name of your application
+* `command_path` - absolute path and filename of deployment marker jar. (required)
+* `environment` - environment in New Relic that node belongs to
+* `proxy` - use proxy to execute deployment marker call. The default is false.
+* `proxy_host` - proxy host name or ip
+* `proxy_port` - proxy port
+* `revision` - revision id of deployment marker
+* `user` - user executing the deployment marker call. This attribute looks to see if there is a SUDO_USER environment variable.  If not, it looks to see if there is a USER environment variable.  If not, it will use 'root'.
 
 ### Example
 
