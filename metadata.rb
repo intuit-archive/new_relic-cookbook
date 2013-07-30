@@ -1,4 +1,4 @@
-name             "new_relic-cookbook"
+name             "new_relic"
 maintainer       "Intuit, Inc."
 maintainer_email "kevin_young@intuit.com"
 license          "Apache 2.0"

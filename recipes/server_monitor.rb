@@ -25,7 +25,7 @@ template node['new_relic']['server_monitor']['config_file'] do
             :proxy_enabled => node['new_relic']['proxy']['enabled'],
             :proxy_url     => full_proxy_url
   notifies :restart,
-           resources(:service => node['new_relic']['server_monitor']['service_name'])
+           "service[#{node['new_relic']['server_monitor']['service_name']}]"
 end
 
 service node['new_relic']['server_monitor']['service_name'] do
