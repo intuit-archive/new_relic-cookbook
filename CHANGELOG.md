@@ -1,4 +1,4 @@
-## head:
+## 1.0.0 (07/31/2013):
 * have LWRPs set updated by last action
 * add foodcritic linting
 * convert ruby_agent_config and java_agent_config to LWRPs
