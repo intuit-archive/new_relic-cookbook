@@ -1,5 +1,7 @@
 ## head:
 * have LWRPs set updated by last action
+* add foodcritic linting
+* convert ruby_agent_config and java_agent_config to LWRPs
 
 ## 0.4.0 (06/11/2013):
 * add proxy support to java deployment record LWRP
