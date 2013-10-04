@@ -138,11 +138,8 @@ working through a proxy```
 
 ### LWRP attributes:
 * `app_name` - the name of your application
-* `command_path` - absolute path and filename of deployment marker jar. (required)
+* `cwd` - the directory to change to
 * `environment` - environment in New Relic that node belongs to
-* `proxy` - use proxy to execute deployment marker call. The default is false.
-* `proxy_host` - proxy host name or ip
-* `proxy_port` - proxy port
 * `revision` - revision id of deployment marker
 * `user` - user executing the deployment marker call. This attribute looks to see if there is a SUDO_USER environment variable.  If not, it looks to see if there is a USER environment variable.  If not, it will use 'root'.
 
