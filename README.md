@@ -1,7 +1,8 @@
 # New Relic Cookbook
 
 # Requirements
-* Chef 10.x or greater
+* Chef 10.x
+* Chef 11.x
 
 Platform:
 * CentOS 6.x
@@ -92,8 +93,8 @@ the agent with your app.
 * `cookbook` - specifies which cookbook to get template file from.  default is `new_relic`
 
 ### Example
-``` ruby
-app_agent_config "/my_app_root/config/newrelic.yml" do
+```ruby
+new_relic_app_agent_config "/my_app_root/config/newrelic.yml" do
   provider Chef::Provider::NewRelicRubyAppAgentConfig
 end
 ```
