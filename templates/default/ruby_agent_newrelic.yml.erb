@@ -177,6 +177,14 @@ common: &default_settings
   # you are running multi-threaded.  Please let us know.
   # multi_threaded = false
 
+  #============================== Browser Monitoring ===============================
+  # New Relic Real User Monitoring gives you insight into the performance real users are
+  # experiencing with your website. This is accomplished by measuring the time it takes for
+  # your users' browsers to download and render your web pages by injecting a small amount
+  # of JavaScript code into the header and footer of each page.
+  browser_monitoring:
+      auto_instrument: <%= @config['browser_auto_instrument'] %>
+
 # Application Environments
 # ------------------------------------------
 # Environment-specific settings are in this section.
