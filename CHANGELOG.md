@@ -1,3 +1,6 @@
+## 1.0.1 (01/21/2014):
+* adding attribute to disable brower auto instrumenting
+
 ## 1.0.0 (07/31/2013):
 * have LWRPs set updated by last action
 * add foodcritic linting

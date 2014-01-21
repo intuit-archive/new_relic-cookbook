@@ -47,6 +47,8 @@ Ensure `recipe[new_relic]` is in run_list.
 
 `node['new_relic']['app_agent']['ssl']` Default value: true
 
+`node['new_relic']['app_agent']['brower_auto_instrument']` Default value: true
+
 `node['new_relic']['server_monitor']['config_file']` - config file location, default value: '/etc/newrelic/nrsysmond.cfg'
 
 `node['new_relic']['server_monitor']['log_file']` - log file location, default value: '/var/log/newrelic/nrsysmond.log'
