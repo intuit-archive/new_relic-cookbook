@@ -21,6 +21,11 @@ describe NewRelicHttpProxy do
     it 'returns the proxy url' do
       object.proxy_url(args).should eq 'http://bob:rock@foo.example.com:8080'
     end
+    it 'returns the proxy url without a proxy user and password' do
+      args.delete 'user'
+      args.delete 'password'
+      object.proxy_url(args).should eq 'http://bob:rock@foo.example.com:8080'
+    end
 
     context 'when passing in empty args' do
       it 'should return an empty string' do
