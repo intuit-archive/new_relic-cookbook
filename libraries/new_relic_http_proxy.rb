@@ -3,17 +3,16 @@ require 'uri'
 module NewRelicHttpProxy
 
   def proxy_url(args={})
-    p args
     return '' if args.empty?
-    userinfo = nil 
-    if args['user'] && args['password']
-      puts '123 test'
-      userinfo = "#{args['user']}:#{args['password']}"
-    end
+
     u = URI::HTTP.build :scheme   => args['scheme'],
                         :host     => args['host'],
-                        :port     => args['port'].to_i,
-                        :userinfo => userinfo
+                        :port     => args['port'].to_i
+
+    if args['user'] && args['password']
+      u.userinfo = "#{args['user']}:#{args['password']}"
+    end
+
     u.to_s
   end
 
