@@ -1,3 +1,6 @@
+## 1.0.2 (01/30/2014):
+* support for proxy with no user & password information
+
 ## 1.0.1 (01/21/2014):
 * adding attribute to disable brower auto instrumenting
 
