@@ -13,7 +13,9 @@ module NewRelicHttpProxy
       u.userinfo = "#{args['user']}:#{args['password']}"
     end
 
-    u.to_s
+    u.to_s.tap do |url|
+      url << ":#{args['port']}" if args['port'] == '80'
+    end
   end
 
 end

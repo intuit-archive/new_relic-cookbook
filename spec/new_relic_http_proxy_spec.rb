@@ -32,6 +32,14 @@ describe NewRelicHttpProxy do
       end
     end
 
+    context 'with port 80' do
+      before { args.merge! 'port' => '80' }
+
+      it 'returns the port on the end' do
+        object.proxy_url(args).should eq 'http://foo.example.com:80'
+      end
+    end
+
   end
 
 end
