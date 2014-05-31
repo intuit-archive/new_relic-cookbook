@@ -1,3 +1,7 @@
+## head
+
+* update server monitor to include the port number when it is 80 (was previously omitted)
+
 ## 1.0.2 (01/30/2014):
 * support for proxy with no user & password information
 
