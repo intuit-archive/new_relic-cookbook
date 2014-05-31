@@ -13,7 +13,7 @@ module NewRelicHttpProxy
       u.userinfo = "#{args['user']}:#{args['password']}"
     end
 
-    u.to_s
+    u.port == 80 ? "#{u}:80" : "#{u}"
   end
 
 end
