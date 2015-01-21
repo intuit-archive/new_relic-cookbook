@@ -1,5 +1,7 @@
 # New Relic Cookbook
 
+*!!! This project has been deprecated.  We recommend you search the [Chef Supermarket ](https://supermarket.chef.io/) for a supported alternative !!!**
+
 # Requirements
 * Chef 10.x
 * Chef 11.x
