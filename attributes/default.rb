@@ -13,6 +13,7 @@ default['new_relic']['app_agent']['capture_params']          = false
 default['new_relic']['app_agent']['developer_mode']          = false
 default['new_relic']['app_agent']['log_daily']               = false
 default['new_relic']['app_agent']['log_file_count']          = 1
+default['new_relic']['app_agent']['log_file_dir']            = '/var/log/newrelic'
 default['new_relic']['app_agent']['log_level']               = 'info'
 default['new_relic']['app_agent']['monitor_mode']            = true
 default['new_relic']['app_agent']['browser_auto_instrument'] = true
