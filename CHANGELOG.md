@@ -1,5 +1,7 @@
 ## head
 
+## 1.1.0 (07/17/2015):
+
 * add logging related attributes for app agent
 
 ## 1.0.3 (06/02/2014):
