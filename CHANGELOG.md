@@ -1,5 +1,7 @@
 ## head
 
+* add logging related attributes for app agent
+
 ## 1.0.3 (06/02/2014):
 
 * update server monitor to include the port number when it is 80 (was previously omitted)
