@@ -43,6 +43,12 @@ Ensure `recipe[new_relic]` is in run_list.
 
 `node['new_relic']['app_agent']['config_file']` - Default value: 'change_me'
 
+`node['new_relic']['app_agent']['log_daily']` - Default value: false
+
+`node['new_relic']['app_agent']['log_file_count']` - Default value: 1
+
+`node['new_relic']['app_agent']['log_file_dir']` - Default value: '/var/log/newrelic'
+
 `node['new_relic']['app_agent']['log_level']` - Default value: 'info'
 
 `node['new_relic']['app_agent']['monitor_mode']`   Default value: true

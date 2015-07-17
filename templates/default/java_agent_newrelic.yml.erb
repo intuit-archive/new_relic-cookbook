@@ -54,9 +54,14 @@ common: &default_settings
   # Default is false.
   #audit_mode: true
 
+  # Set to true to roll the logs daily. Overrides the other configuration variables that affect log rotation.
+  # log_daily: false
+  log_daily: <%= @config['log_daily'] %>
+
   # The number of log files to use.
   # Default is 1.
   #log_file_count: 1
+  log_file_count: <%= @config['log_file_count'] %>
 
   # The maximum number of bytes to write to any one log file.
   # Default is 0 (no limit).
